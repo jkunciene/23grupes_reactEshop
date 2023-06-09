@@ -6,7 +6,7 @@ import Card from 'react-bootstrap/Card';
 
 const OneProduct = () => {
     return (
-        <div className="d-flex justify-content-center flex-wrap">
+        <div className="d-flex justify-content-evenly flex-wrap my-3">
             {
                 products.map((product, index)=>(
                     <Card style={{ width: '18rem' }} key={index}>

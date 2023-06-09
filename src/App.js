@@ -1,15 +1,18 @@
+import {   BrowserRouter as Router } from "react-router-dom";
+
 import Container from 'react-bootstrap/Container';
-import MyHeader from './components/MyHeader';
-import About from './components/About';
+
 import ProductList from './components/ProductList';
+import MyHeader from "./components/MyHeader";
 
 const App = () => {
   return (
-    <Container>
-      <MyHeader/>
-      <About/>
-      <ProductList/>
-    </Container>
+    <Router>
+      <Container>
+        <MyHeader/>
+        <ProductList />
+      </Container>
+    </Router>
   )
 }
 
