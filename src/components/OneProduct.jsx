@@ -4,7 +4,7 @@ import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 
 
-const OneProduct = () => {
+const OneProduct = ({addToCart}) => {
     return (
         <div className="d-flex justify-content-evenly flex-wrap my-3">
             {
@@ -15,7 +15,8 @@ const OneProduct = () => {
                       <Card.Title>{product.name}</Card.Title>
                       <Card.Text>{product.description}</Card.Text>
                       <Card.Text>{product.price}</Card.Text>
-                      <Button variant="primary">Buy</Button>
+                      <Button variant="primary"
+                      onClick={()=> addToCart(product)}>Buy</Button>
                     </Card.Body>
                   </Card>
                 ))
