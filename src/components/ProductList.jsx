@@ -49,12 +49,27 @@ const ProductList = () => {
         }
         setProducts(newCart);
     }
+
+    const decreaseQuantity = (item) => {
+        //console.log(item, "decreaseQuantity");
+        const newCart = [...products]
+        let productInCart = newCart.find(tempProduct =>
+            item.name === tempProduct.name);
+        if (productInCart && productInCart.quantity > 1) {
+            productInCart.quantity--;
+        } else {
+            newCart.splice(productInCart, 1)
+        }
+        setProducts(newCart);
+    }
     //console.log(products)
     return (
         <Routes>
             <Route path="/" element={<About />} />
             <Route path="/products" element={<OneProduct addToCart={addToCart} />} />
-            <Route path="/cart" element={<Cart products={products} increaseQuantity={increaseQuantity} />} />
+            <Route path="/cart" element={<Cart products={products}
+                increaseQuantity={increaseQuantity}
+                decreaseQuantity={decreaseQuantity} />} />
         </Routes>
     )
 }

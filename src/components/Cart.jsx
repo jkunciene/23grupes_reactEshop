@@ -1,6 +1,6 @@
 import { Table } from 'react-bootstrap';
 
-const Cart = ({ products, increaseQuantity }) => {
+const Cart = ({ products, increaseQuantity, decreaseQuantity }) => {
     console.log(products);
 
     if (products.length > 0) {
@@ -29,7 +29,8 @@ const Cart = ({ products, increaseQuantity }) => {
                                         <button className="btn btn-info"
                                         onClick={()=>increaseQuantity(oneProduct)}>+</button>
                                     {oneProduct.quantity}
-                                    <button className="btn btn-info">-</button>
+                                    <button className="btn btn-info"
+                                    onClick={()=>decreaseQuantity(oneProduct)}>-</button>
                                     </td>
                                     <td>{oneProduct.price}</td>
                                     <td><button className="btn btn-danger">Remove</button></td>
