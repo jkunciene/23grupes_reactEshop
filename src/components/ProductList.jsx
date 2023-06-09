@@ -57,10 +57,20 @@ const ProductList = () => {
             item.name === tempProduct.name);
         if (productInCart && productInCart.quantity > 1) {
             productInCart.quantity--;
+            setProducts(newCart);
         } else {
-            newCart.splice(productInCart, 1)
-        }
-        setProducts(newCart);
+            setProducts(newCart.filter(temItem => temItem !== item))
+        }        
+    }
+
+    const deleteProduct = (item) =>{
+        const newCart = [...products];
+        setProducts(newCart.filter(temItem => temItem !== item));
+    }
+
+    const clearCart = ()=>{
+        console.log('clearCart')
+        setProducts([]);
     }
     //console.log(products)
     return (
@@ -69,7 +79,9 @@ const ProductList = () => {
             <Route path="/products" element={<OneProduct addToCart={addToCart} />} />
             <Route path="/cart" element={<Cart products={products}
                 increaseQuantity={increaseQuantity}
-                decreaseQuantity={decreaseQuantity} />} />
+                decreaseQuantity={decreaseQuantity} 
+                deleteProduct={deleteProduct}/>} 
+                clearCart={clearCart}/>
         </Routes>
     )
 }

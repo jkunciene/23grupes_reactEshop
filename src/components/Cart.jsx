@@ -1,8 +1,12 @@
 import { Table } from 'react-bootstrap';
 
-const Cart = ({ products, increaseQuantity, decreaseQuantity }) => {
+const Cart = ({ products, increaseQuantity, decreaseQuantity, deleteProduct, clearCart }) => {
     console.log(products);
 
+const getTotal =()=>{
+    return products.reduce((sum, {price, quantity}) =>
+    sum +price*quantity, 0).toFixed(2)
+}
     if (products.length > 0) {
         return (
             <div>
@@ -33,11 +37,21 @@ const Cart = ({ products, increaseQuantity, decreaseQuantity }) => {
                                     onClick={()=>decreaseQuantity(oneProduct)}>-</button>
                                     </td>
                                     <td>{oneProduct.price}</td>
-                                    <td><button className="btn btn-danger">Remove</button></td>
+                                    <td><button className="btn btn-danger"
+                                    onClick={()=>deleteProduct(oneProduct)}>Remove</button></td>
                                 </tr>
                             ))
                         }
                     </tbody>
+                    <tfoot>
+                        <tr>
+                            <td>Bendra suma</td>
+                            <td>{getTotal()}</td>
+                            <td><button 
+                            className="btn btn-danger" 
+                            onClick={clearCart}>Clear Cart</button></td>
+                        </tr>
+                    </tfoot>
                 </Table>
             </div>
         )
