@@ -1,6 +1,6 @@
 import { Table } from 'react-bootstrap';
 
-const Cart = ({ products }) => {
+const Cart = ({ products, increaseQuantity }) => {
     console.log(products);
 
     if (products.length > 0) {
@@ -26,7 +26,8 @@ const Cart = ({ products }) => {
                                     <td>{index + 1}</td>
                                     <td>{oneProduct.name}</td>
                                     <td className="d-flex justify-content-around">
-                                        <button className="btn btn-info">+</button>
+                                        <button className="btn btn-info"
+                                        onClick={()=>increaseQuantity(oneProduct)}>+</button>
                                     {oneProduct.quantity}
                                     <button className="btn btn-info">-</button>
                                     </td>
